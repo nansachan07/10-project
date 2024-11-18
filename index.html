@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Brand Info</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            width: 150px;
+            height: 150px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .brand img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .brand:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .modal-content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .modal h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .modal p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .close-btn {
+            background-color: #ff5c5c;
+            border: none;
+            padding: 12px 20px;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #e04f4f;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Explore Fashion Brands</h1>
+
+    <div class="gallery">
+        <!-- Brand logos that will open a modal with more information -->
+        <div class="brand" onclick="openModal('gucci')">
+            <img src="https://via.placeholder.com/150/333333/ffffff?text=Gucci" alt="Gucci">
+        </div>
+        <div class="brand" onclick="openModal('prada')">
+            <img src="https://via.placeholder.com/150/000000/ffffff?text=Prada" alt="Prada">
+        </div>
+        <div class="brand" onclick="openModal('chanel')">
+            <img src="https://via.placeholder.com/150/f2f2f2/000000?text=Chanel" alt="Chanel">
+        </div>
+        <div class="brand" onclick="openModal('lv')">
+            <img src="https://via.placeholder.com/150/6f4f28/ffffff?text=LV" alt="Louis Vuitton">
+        </div>
+        <div class="brand" onclick="openModal('dior')">
+            <img src="https://via.placeholder.com/150/1d1d1b/ffffff?text=Dior" alt="Dior">
+        </div>
+        <div class="brand" onclick="openModal('tiffany')">
+            <img src="https://via.placeholder.com/150/0d9be6/ffffff?text=Tiffany+&+Co" alt="Tiffany & Co.">
+        </div>
+    </div>
+
+    <!-- Modals for each brand -->
+    <div id="gucci" class="modal">
+        <div class="modal-content">
+            <h2>Gucci</h2>
+            <p>Founded in 1921 by Guccio Gucci, Gucci is one of the world’s most influential luxury fashion brands. Known for its bold use of colors, vintage patterns, and signature GG logo, Gucci represents high-end Italian craftsmanship combined with modern trends.</p>
+            <p><strong>Style Details:</strong> Contemporary meets vintage, often with eclectic prints, luxurious leather goods, and innovative designs. Gucci is known for blending classic elegance with audacious street style.</p>
+            <button class="close-btn" onclick="closeModal('gucci')">Close</button>
+        </div>
+    </div>
+
+    <div id="prada" class="modal">
+        <div class="modal-content">
+            <h2>Prada</h2>
+            <p>Prada, founded in 1913 by Mario Prada, is renowned for its sleek, modern designs that define sophistication and elegance. Prada redefined luxury fashion by blending minimalist, forward-thinking designs with high-quality materials.</p>
+            <p><strong>Style Details:</strong> Clean lines, luxurious leather goods, and a forward-thinking aesthetic. Prada is known for its avant-garde approach to fashion and its use of cutting-edge materials.</p>
+            <button class="close-btn" onclick="closeModal('prada')">Close</button>
+        </div>
+    </div>
+
+    <div id="chanel" class="modal">
+        <div class="modal-content">
+            <h2>Chanel</h2>
+            <p>Founded by the legendary Coco Chanel in 1910, Chanel is synonymous with timeless elegance and simplicity. Famous for the little black dress and its iconic No. 5 perfume, Chanel revolutionized the world of fashion.</p>
+            <p><strong>Style Details:</strong> Elegant, feminine, and timeless. Chanel’s style often focuses on minimalist luxury, impeccable tailoring, and understated elegance. The brand has mastered the art of chic simplicity.</p>
+            <button class="close-btn" onclick="closeModal('chanel')">Close</button>
+        </div>
+    </div>
+
+    <div id="lv" class="modal">
+        <div class="modal-content">
+            <h2>Louis Vuitton</h2>
+            <p>Louis Vuitton, established in 1854, is one of the most iconic luxury brands globally, known for its leather goods and travel accessories. The brand’s signature monogram pattern is recognized worldwide.</p>
+            <p><strong>Style Details:</strong> Classic, timeless designs with a focus on luxury craftsmanship and exclusivity. Louis Vuitton is known for its elegant yet durable luggage, handbags, and accessories.</p>
+            <button class="close-btn" onclick="closeModal('lv')">Close</button>
+        </div>
+    </div>
+
+    <div id="dior" class="modal">
+        <div class="modal-content">
+            <h2>Dior</h2>
+            <p>Christian Dior, founded in 1946, is one of the most iconic fashion houses in the world. Famous for its luxurious and revolutionary designs, the brand is known for redefining the elegance of women’s fashion.</p>
+            <p><strong>Style Details:</strong> Feminine, refined, and glamorous. Dior’s collections are known for their elegant silhouettes, luxurious fabrics, and the revolutionary "New Look" that changed fashion in the 1940s.</p>
+            <button class="close-btn" onclick="closeModal('dior')">Close</button>
+        </div>
+    </div>
+
+    <div id="tiffany" class="modal">
+        <div class="modal-content">
+            <h2>Tiffany & Co.</h2>
+            <p>Tiffany & Co. is renowned for its luxury jewelry, especially diamond engagement rings, and its iconic blue packaging. Founded in 1837, it remains a symbol of elegance and refinement.</p>
+            <p><strong>Style Details:</strong> Luxurious, classic, and timeless. Tiffany’s designs focus on sophistication and fine craftsmanship, creating elegant pieces that are both modern and traditional.</p>
+            <button class="close-btn" onclick="closeModal('tiffany')">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(brandId) {
+            const modal = document.getElementById(brandId);
+            modal.style.display = 'flex';
+            setTimeout(function() {
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.classList.add('show');
+            }, 10);
+        }
+
+        function closeModal(brandId) {
+            const modal = document.getElementById(brandId);
+            const modalContent = modal.querySelector('.modal-content');
+            modalContent.classList.remove('show');
+            setTimeout(function() {
+                modal.style.display = 'none';
+            }, 500);
+        }
+
+        // Close modal if clicked outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target == modal) {
+                    const modalId = modal.id;
+                    closeModal(modalId);
+                }
+            });
+        };
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
